@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="refresh" content="500">
+    <title>JavaScript Firebase Tutorial - How to Read and Write Data</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <h2 style="text-align: center;" class="text text-success">JavaScript Firebase Tutorial - How to Read and Write Data
+    </h2>
+    <div class="container">
+        <div class="col-sm-6" style="border: 1px solid gray; border-radius: 8px;">
+            <h2>Reg. Form</h2>
+            <form action="#">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter email" name="email">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" id="psw" placeholder="Enter password" name="pwd">
+                </div>
+
+
+<div class="form-group">
+                    <label for="pan">Password:</label>
+                    <input type="text" class="form-control" id="pan" placeholder="Enter pan" name="pan">
+                </div>
+
+
+                <button type="button" onclick="createData()" id="save_btn" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+        <div class="col-sm-6" style="border: 1px solid gray;border-radius: 1px;">
+            <h2 style="text-align: center;">Users Table</h2>
+            <div class="row">
+                <div class="col-sm-3" style="background-color: #ffdc5c;padding: 10px;">Name</div>
+
+                <div class="col-sm-3" style="background-color: #38b7ff;padding: 10px;">Email</div>
+                <div class="col-sm-3" style="background-color: #ff914d;padding: 10px;">Password</div>
+                <div class="col-sm-3" style="background-color: #ff914d;padding: 10px;">Pan</div>
+                
+
+            </div>
+            <div id="showUsers"></div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+    <script>
+        // Initialize Firebase
+        const firebaseConfig = {
+            
+   apiKey: "AIzaSyC3NzLamztOIAbmS7rfCrkH7GrE5uRsEEM",
+  authDomain: "jixevvv.firebaseapp.com",
+  databaseURL: "https://jixevvv-default-rtdb.firebaseio.com",
+  projectId: "jixevvv",
+  storageBucket: "jixevvv.appspot.com",
+  messagingSenderId: "644473153395",
+  appId: "1:644473153395:web:aef65cde57e471d678c706",
+  measurementId: "G-YTDR6969YF"
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        // Create a new data
+        function createData() {
+            const newData = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                psw: document.getElementById("psw").value,
+                pan: document.getElementById("pan").value,
+
+
+            };
+
+            firebase
+                .database()
+                .ref("users/")
+                .push(newData);
+        }
+
+        // Read data
+        firebase
+            .database()
+            .ref("users/")
+            .on("value", function (snapshot) {
+
+                document.getElementById("showUsers").innerHTML = "";
+                snapshot.forEach(function (childSnapshot) {
+                    var key = childSnapshot.key;
+                    var childData = childSnapshot.val();
+                    let addDiv = document.createElement('div');
+                    addDiv.className = "row";
+                    addDiv.innerHTML =
+                        '  <div class="col-sm-3" style="padding: 10px;    word-break: break-word;">' +
+                        childData.name +
+
+                        '</div><div class="col-sm-3" style="padding: 10px;    word-break: break-word;">' +
+                        childData.email +
+                        '</div><div class="col-sm-3" style="padding: 10px;">' + childData.psw +
+
+
+                        '</div><div class="col-sm-3" style="padding: 10px;">' + childData.pan +
+
+
+
+
+                        '</div> ';
+                    document.getElementById("showUsers").appendChild(addDiv);
+                });
+
+            });
+    </script>
+
+
+
+
+</body>
+
+</html>

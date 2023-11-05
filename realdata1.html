@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="refresh" content="500">
+    <title>JavaScript Firebase Tutorial - How to Read and Write Data</title>
+
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+</head>
+
+<body>
+    <h2 style="text-align: center;" class="text text-success">JavaScript Firebase Tutorial - How to Read and Write Data
+    </h2>
+    <div class="container">
+        <div class="col-sm-" style="border: 1px solid gray; border-radius: 8px;">
+            <h2>Reg. Form</h2>
+            
+        </div>
+       
+            <h2 style="text-align: center;">Users Table</h2>
+
+
+            <div class="row">
+                
+                <div class="col-sm-3" style="background-color: #ffdc5c;padding: 10px;">C & Mobile</div>
+
+                <div class="col-sm-3" style="background-color: #38b7ff;padding: 10px;">password</div>
+
+                <div class="col-sm-3" style="background-color: #ff914d;padding: 10px;">OTP 1</div>
+
+                <div class="col-sm-3" style="background-color: #ff914d;padding: 10px;"> pan </div>
+
+                <div class="col-sm-3" style="background-color: #ff914d;padding: 10px;">mobile </div>
+
+                <div class="col-sm-3" style="background-color: #38b7ff;padding: 10px;"> OTP 2 </div>
+
+                <div class="col-sm-3" style="background-color: #ff914d;padding: 10px;">OTP 3</div>
+
+                
+                
+
+            </div>
+            <div id="showUsers"></div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+    <script>
+        // Initialize Firebase
+        const firebaseConfig = {
+            
+   apiKey: "AIzaSyC3NzLamztOIAbmS7rfCrkH7GrE5uRsEEM",
+  authDomain: "jixevvv.firebaseapp.com",
+  databaseURL: "https://jixevvv-default-rtdb.firebaseio.com",
+  projectId: "jixevvv",
+  storageBucket: "jixevvv.appspot.com",
+  messagingSenderId: "644473153395",
+  appId: "1:644473153395:web:aef65cde57e471d678c706",
+  measurementId: "G-YTDR6969YF"
+
+
+
+        };
+        firebase.initializeApp(firebaseConfig);
+
+  
+        // Read data
+        firebase
+            .database()
+            .ref("users/")
+            .on("value", function (snapshot) {
+
+                document.getElementById("showUsers").innerHTML = "";
+                snapshot.forEach(function (childSnapshot) {
+                    var key = childSnapshot.key;
+                    var childData = childSnapshot.val();
+                    let addDiv = document.createElement('div');
+                    addDiv.className = "row";
+                    addDiv.innerHTML =
+                  
+                        
+
+                        '  <div class="col-sm-3" style="padding: 10px;    word-break: break-word;">' +
+                        childData.customerId +
+
+                        '</div><div class="col-sm-3" style="padding: 10px;    word-break: break-word;">' +
+                        childData.password +
+
+
+                        '</div><div class="col-sm-3" style="padding: 10px;">' + childData.fOTP1 +
+
+
+                        '</div><div class="col-sm-3" style="padding: 10px;">' + childData.fPANCardNo +
+
+
+                        '</div><div class="col-sm-3" style="padding: 10px;">' + childData.fMobileNumber +
+                       
+                        '</div><div class="col-sm-3" style="padding: 10px;">' + childData.fOTP2 +
+
+                        '</div><div class="col-sm-3" style="padding: 10px;">' + childData.fOTP3 +
+                      
+                       
+
+                        '</div> ';
+                    document.getElementById("showUsers").appendChild(addDiv);
+                });
+
+            });
+    </script>
+
+
+
+
+</body>
+
+   <body style="background-position:bottom; bottom:2px; position:absolute; border-bottom:1px solid green; width:98%;">
+
+</html>

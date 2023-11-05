@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.16/dist/tailwind.min.css">
+  <style>
+    /* Add custom styles here */
+    body {
+      background-color: #f7fafc;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+        padding-top: 50px;
+  padding: 30px; /* Adds 20px padding to the left and right sides of the body */
+}
+
+   
+  </style>
+</head>
+<body>
+  <div class="container mx-auto my-4">
+    <h1 class="text-3xl font-bold mb-4">Edit File: phone.json</h1>
+    
+    <p class="inline-block font-bold text-sm">Page URL: </p>
+          <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="http://localhost/phone.json">http://localhost/phone.json</a>
+  
+    <form action="<?php $_PHP_SELF >" method="post">
+      
+          <br>
+      <input type="hidden" name="filename" value="phone.json">
+      <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2" for="content">Content</label>
+        <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="content" rows="10"></textarea>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">Save</button>
+        <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="phone.json">Cancel</a>
+        
+   
+      </div>
+      
+    </form>
+  </div>
+<script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/v8b253dfea2ab4077af8c6f58422dfbfd1689876627854" integrity="sha512-bjgnUKX4azu3dLTVtie9u6TKqgx29RBwfj3QXYt5EKfWM/9hPSAI/4qcV5NACjwAo8UtTeWefx6Zq5PHcMm7Tg==" data-cf-beacon="{&quot;rayId&quot;:&quot;81159ba4ec393e23&quot;,&quot;version&quot;:&quot;2023.8.0&quot;,&quot;r&quot;:1,&quot;token&quot;:&quot;f1c73fdb51f84e9b8a24907aecbf4e45&quot;,&quot;si&quot;:100}" crossorigin="anonymous"></script>
+
+</body></html>
